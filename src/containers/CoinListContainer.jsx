@@ -1,21 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 import CoinList from "../components/CoinList";
-import { getCoin } from "../modules/coins";
+import { getCoins } from "../modules/coins";
+import { useSelector, useDispatch } from "react-redux";
+import { useCallback } from "react";
 
-const CoinListContainer = ({ loading, data, getCoin }) => {
+const CoinListContainer = ({ loading, data, getCoins }) => {
     return (
         <>
             <CoinList
                 loading={loading}
                 data={data}
-                getCoin={getCoin}
+                getCoin={getCoins}
             ></CoinList>
         </>
     );
 };
 
 export default connect(
-    (state) => ({ loading: state.coins.loading, data: state.coins.data }),
-    { getCoin },
+    (state) => ({
+        loading: state.coins.loading,
+        data: state.coins.data,
+    }),
+    { getCoins },
 )(CoinListContainer);

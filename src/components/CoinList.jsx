@@ -3,7 +3,6 @@ import Coin from "../components/Coin";
 
 const CoinList = ({ loading, data, getCoin }) => {
     useEffect(() => {
-        getCoin();
         setTimeout(() => {
             setInterval(() => {
                 getCoin();
